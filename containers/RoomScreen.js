@@ -1,25 +1,23 @@
-import { ActivityIndicator, Text, View } from "react-native";
-import { useRoute } from "@react-navigation/core";
+import { ActivityIndicator, SwiperFlatList, Text, View } from "react-native";
+import axios from "axios";
 import { useEffect, useState } from "react";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-const RoomScreen = () => {
-  const { params } = useRoute();
-
+const RoomScreen = ({ route }) => {
   const [data, setData] = useState();
   const [isLoading, setIsLoading] = useState(true);
 
-  //   console.log(props.route);
   useEffect(() => {
     const fetchData = async () => {
       const response = await axios.get(
-        `https://express-airbnb-api.herokuapp.com/rooms/${params.id}`
+        `https://express-airbnb-api.herokuapp.com/rooms/${route.params.id}`
       );
       setData(response.data);
-      // console.log("response.data===>", response.data);
+
       setIsLoading(false);
-      // console.log("data.photos===>", data);
+      console.log("data.photos===>", data);
     };
-    console.log("data===>", params);
+
     fetchData();
   }, []);
   return isLoading ? (
@@ -27,10 +25,24 @@ const RoomScreen = () => {
       <ActivityIndicator />
     </View>
   ) : (
-    <View>
-      <Text>RoomScreen</Text>
-      <Text>id = {route.params.id}</Text>
-    </View>
+    <>
+      <SafeAreaView>
+        <View>
+          <SwiperFlatList
+            autoplay={false}
+            autoplayDelay={2}
+            autoplayLoop={false}
+            index={2}
+            showPagination
+            data={data}
+            renderItem={({ item }) => (
+              <ImageBackground resizeMode="cover" source={{ uri: item.url }} />
+            )}
+          />
+          <Text>{data.price} €</Text>
+        </View>
+      </SafeAreaView>
+    </>
   );
 };
 

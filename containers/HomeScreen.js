@@ -8,7 +8,6 @@ import {
   Text,
   TouchableOpacity,
   View,
-  ScrollView,
   StyleSheet,
 } from "react-native";
 import { useState, useEffect } from "react";
@@ -24,7 +23,7 @@ export default function HomeScreen(props) {
       const response = await axios.get(
         "https://express-airbnb-api.herokuapp.com/rooms"
       );
-      console.log(response.data);
+      // console.log(response.data);
       setData(response.data);
       setIsLoading(false);
     };
