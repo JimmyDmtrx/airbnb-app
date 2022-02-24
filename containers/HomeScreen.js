@@ -43,7 +43,6 @@ export default function HomeScreen(props) {
         renderItem={({ item }) => {
           return (
             <TouchableOpacity
-              // style={styles.containOffer}
               style={styles.container}
               onPress={() => {
                 props.navigation.navigate("Room", {
