@@ -10,7 +10,7 @@ import SignInScreen from "./containers/SignInScreen";
 import SignUpScreen from "./containers/SignUpScreen";
 import SettingsScreen from "./containers/SettingsScreen";
 import SplashScreen from "./containers/SplashScreen";
-
+import RoomScreen from "./containers/RoomScreen";
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
@@ -83,17 +83,36 @@ export default function App() {
                   }}
                 >
                   {() => (
+                    // <Stack.Navigator>
+                    //   <Stack.Screen
+                    //     name="Home"
+                    //     options={{
+                    //       title: "My App",
+                    //       headerStyle: { backgroundColor: "red" },
+                    //       headerTitleStyle: { color: "white" },
+                    //     }}
+                    //   >
+                    //     {() => <HomeScreen />}
+                    //     <Stack.Screen name="Room" component={RoomScreen} />
+                    //   </Stack.Screen>
+
+                    //   <Stack.Screen
+                    //     name="Profile"
+                    //     options={{
+                    //       title: "User Profile",
+                    //     }}
+                    //   >
+                    //     {() => <ProfileScreen />}
+                    //   </Stack.Screen>
+                    // </Stack.Navigator>
                     <Stack.Navigator>
-                      <Stack.Screen
-                        name="Home"
-                        options={{
-                          title: "My App",
-                          headerStyle: { backgroundColor: "red" },
-                          headerTitleStyle: { color: "white" },
-                        }}
-                      >
-                        {() => <HomeScreen />}
+                      <Stack.Screen name="Home">
+                        {(props) => <HomeScreen {...props} />}
                       </Stack.Screen>
+
+                      {/* <Stack.Screen name="Home" component={HomeScreen} /> */}
+
+                      <Stack.Screen name="Room" component={RoomScreen} />
 
                       <Stack.Screen
                         name="Profile"
