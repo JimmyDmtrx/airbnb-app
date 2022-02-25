@@ -145,18 +145,16 @@ export default function App() {
                           title: "User Profile",
                         }}
                       >
-                        {() => <ProfileScreen />}
+                        {() => <ProfileScreen userId={userId} />}
                       </Stack.Screen>
-                      <Stack.Screen
+                      {/* <Stack.Screen
                         name="Settings"
                         options={{
                           title: "Settings",
                         }}
                       >
-                        {() => (
-                          <SettingsScreen setToken={setToken} setId={setId} />
-                        )}
-                      </Stack.Screen>
+                        {() => <SettingsScreen setToken={setToken} />}
+                      </Stack.Screen> */}
                     </Stack.Navigator>
                   )}
                 </Tab.Screen>
