@@ -19,6 +19,7 @@ export default function HomeScreen(props) {
   const [data, setData] = useState();
   const navigation = useNavigation();
   useEffect(() => {
+    console.log();
     const fetchData = async () => {
       const response = await axios.get(
         "https://express-airbnb-api.herokuapp.com/rooms"

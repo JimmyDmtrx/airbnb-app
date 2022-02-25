@@ -13,7 +13,7 @@ import axios from "axios";
 import { useState } from "react";
 import { KeyboardAwareScrollView } from "react-native-keyboard-aware-scroll-view";
 
-export default function SignUpScreen({ setToken }) {
+export default function SignUpScreen({ setToken, setId }) {
   const [email, setEmail] = useState("jim.dmtrx@live.fr");
   const [username, setUsername] = useState("jimjim");
   const [description, setDescription] = useState("description");
@@ -36,6 +36,7 @@ export default function SignUpScreen({ setToken }) {
             }
           );
           // console.log(response.data);
+          setId(response.data.id);
           setToken(response.data.token);
         } else {
           setErrorMessage("Les 2 MDP ne sont pas identiques !");
